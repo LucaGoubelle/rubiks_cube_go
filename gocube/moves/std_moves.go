@@ -2,7 +2,6 @@ package moves
 
 
 func moveU(cube map[string][][]string) map[string][][]string {
-	/* todo: implement this */
 	cube["up"] = rotate(cube["up"])
 	var size = len(cube["up"])
 
@@ -39,3 +38,42 @@ func moveU2(cube map[string][][]string) map[string][][]string {
 	}
 	return cube
 }
+
+func moveR(cube map[string][][]string) map[string][][]string {
+	cube["right"] = rotate(cube["right"])
+	var size = len(cube["right"])
+
+	var newFront = genEmptyFace(size)
+	var newUp = genEmptyFace(size)
+	var newBack = genEmptyFace(size)
+	var newDown = genEmptyFace(size)
+
+	for i:=0; i<size; i++ {
+		newFront[i][size-1] = cube["down"][i][size-1]
+		newUp[i][size-1] = cube["front"][i][size-1]
+		newBack[i][size-1] = cube["up"][i][size-1]
+		newDown[i][0] = cube["back"][i][0]
+	}
+
+	cube["front"] = transfert(cube["front"], newFront)
+	cube["up"] = transfert(cube["up"], newUp)
+	cube["back"] = transfert(cube["back"], rotateTwice(newBack))
+	cube["down"] = transfert(cube["down"], rotateTwice(newDown))
+
+	return cube
+}
+
+func moveRPrime(cube map[string][][]string) map[string][][]string {
+	for i:=0; i<3; i++ {
+		cube = moveR(cube)
+	}
+	return cube
+}
+
+func moveR2(cube map[string][][]string) map[string][][]string {
+	for i:=0; i<2; i++ {
+		cube = moveR(cube)
+	}
+	return cube
+}
+

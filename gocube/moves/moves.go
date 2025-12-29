@@ -14,7 +14,11 @@ func SimpleMove(cube map[string][][]string, mv string) map[string][][]string {
 	case "U2":
 		cube = moveU2(cube)
 	case "R":
-		cube = cube
+		cube = moveR(cube)
+	case "R'":
+		cube = moveRPrime(cube)
+	case "R2":
+		cube = moveR2(cube)
 	case "L":
 		cube = cube
 	case "D":
