@@ -1,4 +1,4 @@
-package gocube
+package moves
 
 import(
 	"strings"
@@ -8,7 +8,11 @@ func SimpleMove(cube map[string][][]string, mv string) map[string][][]string {
 	/* todo: implement moves cases */
 	switch mv {
 	case "U":
-		cube = cube
+		cube = moveU(cube)
+	case "U'":
+		cube = moveUPrime(cube)
+	case "U2":
+		cube = moveU2(cube)
 	case "R":
 		cube = cube
 	case "L":

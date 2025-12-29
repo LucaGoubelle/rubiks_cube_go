@@ -1,4 +1,4 @@
-package gocube
+package moves
 
 func genEmptyFace(size int) [][]string {
 	var face = make([][]string, size)
