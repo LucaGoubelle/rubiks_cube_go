@@ -1,9 +1,5 @@
 package gocube
 
-import (
-	"encoding/json"
-)
-
 func genEmptyFace(size int) [][]string {
 	var face = make([][]string, size)
 	for i := 0; i < size; i++ {
@@ -18,9 +14,9 @@ func genEmptyFace(size int) [][]string {
 
 func copyFace(face [][]string) [][]string {
 	var newFace = make([][]string, len(face))
-	for i := 0; i < size; i++ {
-		var row = make([]string, size)
-		for j := 0; j < size; j++ {
+	for i := 0; i < len(face); i++ {
+		var row = make([]string, len(face))
+		for j := 0; j < len(face); j++ {
 			row[j] = face[i][j]
 		}
 		newFace[i] = row
@@ -51,6 +47,7 @@ func rotateAsync(face [][]string) [][]string {
 		}
 		cnt--
 	}
+	return newFace
 }
 
 func rotateTwice(face [][]string) [][]string {
