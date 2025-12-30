@@ -42,6 +42,44 @@ func moveU2(cube map[string][][]string) map[string][][]string {
 	return cube
 }
 
+func moveD(cube map[string][][]string) map[string][][]string {
+	cube["down"] = rotate(cube["down"])
+	var size = len(cube["down"])
+
+	var newFront = genEmptyFace(size)
+	var newLeft = genEmptyFace(size)
+	var newRight = genEmptyFace(size)
+	var newBack = genEmptyFace(size)
+
+	for i:=0; i<size; i++ {
+		newFront[size-1][i] = cube["left"][size-1][i]
+		newLeft[size-1][i] = cube["back"][size-1][i]
+		newRight[size-1][i] = cube["front"][size-1][i]
+		newBack[size-1][i] = cube["right"][size-1][i]
+	}
+
+	cube["front"] = transfert(cube["front"], newFront)
+	cube["left"] = transfert(cube["left"], newLeft)
+	cube["right"] = transfert(cube["right"], newRight)
+	cube["back"] = transfert(cube["back"], newBack)
+
+	return cube
+}
+
+func moveDPrime(cube map[string][][]string) map[string][][]string {
+	for i:=0; i<3; i++ {
+		cube = moveD(cube)
+	}
+	return cube
+}
+
+func moveD2(cube map[string][][]string) map[string][][]string {
+	for i:=0; i<2; i++ {
+		cube = moveD(cube)
+	}
+	return cube
+}
+
 /* ############################
 ##### L / R MOVES  ############
 ###############################*/
