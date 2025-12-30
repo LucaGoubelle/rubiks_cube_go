@@ -28,7 +28,9 @@ func SimpleMove(cube map[string][][]string, mv string) map[string][][]string {
 	case "x":
 		cube = cube
 	case "y":
-		cube = cube
+		cube = moveY(cube)
+	case "y'":
+		cube = moveYPrime(cube)
 	case "z":
 		cube = cube
 	}
