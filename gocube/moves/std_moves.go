@@ -1,5 +1,8 @@
 package moves
 
+/* #######################
+##### U / D MOVES ########
+##########################*/
 
 func moveU(cube map[string][][]string) map[string][][]string {
 	cube["up"] = rotate(cube["up"])
@@ -35,6 +38,48 @@ func moveUPrime(cube map[string][][]string) map[string][][]string {
 func moveU2(cube map[string][][]string) map[string][][]string {
 	for i:=0; i<2; i++ {
 		cube = moveU(cube)
+	}
+	return cube
+}
+
+/* ############################
+##### L / R MOVES  ############
+###############################*/
+
+func moveL(cube map[string][][]string) map[string][][]string {
+	cube["left"] = rotate(cube["left"])
+	var size = len(cube["left"])
+
+	var newUp = genEmptyFace(size)
+	var newFront = genEmptyFace(size)
+	var newDown = genEmptyFace(size)
+	var newBack = genEmptyFace(size)
+
+	for i:=0; i<size; i++ {
+		newFront[i][0] = cube["up"][i][0]
+		newDown[i][0] = cube["front"][i][0]
+		newBack[i][0] = cube["down"][i][0]
+		newUp[i][size-1] = cube["back"][i][size-1]
+	}
+
+	cube["front"] = transfert(cube["front"], newFront)
+	cube["up"] = transfert(cube["up"], rotateTwice(newUp))
+	cube["down"] = transfert(cube["down"], newDown)
+	cube["back"] = transfert(cube["back"], rotateTwice(newBack))
+
+	return cube
+}
+
+func moveLPrime(cube map[string][][]string) map[string][][]string {
+	for i:=0; i<3; i++ {
+		cube = moveL(cube)
+	}
+	return cube
+}
+
+func moveL2(cube map[string][][]string) map[string][][]string {
+	for i:=0; i<2; i++ {
+		cube = moveL(cube)
 	}
 	return cube
 }
