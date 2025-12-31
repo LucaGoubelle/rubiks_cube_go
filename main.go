@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"simul/gocube/gocube"
 	// "simul/gocube/gocube/moves"
-	// "simul/gocube/gocube/data"
+	"simul/gocube/gocube/data"
 )
 
 func main() {
@@ -15,5 +15,7 @@ func main() {
 	// cube = moves.SimpleMove(cube, "F")
 	cube = gocube.ScrambleCube(cube)
 	gocube.PrintCube(cube)
+
+	fmt.Println(data.DumpStr(cube))
 	// data.ExportToJSON(cube, "res/3x3.json")
 }
