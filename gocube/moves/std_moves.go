@@ -160,3 +160,40 @@ func moveR2(cube map[string][][]string) map[string][][]string {
 	return cube
 }
 
+func moveF(cube map[string][][]string) map[string][][]string {
+	cube["front"] = rotate(cube["front"])
+	var size = len(cube["front"])
+
+	var newUp = genEmptyFace(size)
+	var newLeft = genEmptyFace(size)
+	var newRight = genEmptyFace(size)
+	var newDown = genEmptyFace(size)
+
+	for i:=0; i<size; i++ {
+		newUp[i][size-1] = cube["left"][i][size-1]
+		newLeft[0][i] = cube["down"][0][i]
+		newRight[size-1][i] = cube["up"][size-1][i]
+		newDown[i][0] = cube["right"][i][0]
+	}
+
+	cube["up"] = transfert(cube["up"], rotate(newUp))
+	cube["left"] = transfert(cube["left"], rotate(newLeft))
+	cube["right"] = transfert(cube["right"], rotate(newRight))
+	cube["down"] = transfert(cube["down"], rotate(newDown))
+
+	return cube
+}
+
+func moveFPrime(cube map[string][][]string) map[string][][]string {
+	for i:=0; i<3; i++ {
+		cube = moveF(cube)
+	}
+	return cube
+}
+
+func moveF2(cube map[string][][]string) map[string][][]string {
+	for i:=0; i<2; i++ {
+		cube = moveF(cube)
+	}
+	return cube
+}

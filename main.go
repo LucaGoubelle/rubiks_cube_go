@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 	"simul/gocube/gocube"
-	"simul/gocube/gocube/moves"
+	// "simul/gocube/gocube/moves"
 	// "simul/gocube/gocube/data"
 )
 
@@ -12,7 +12,8 @@ func main() {
 	// var cube = data.ImportFromJSON("res/3x3.json")
 	gocube.PrintCube(cube)
 	fmt.Printf("\n-------------------------------------------\n\n")
-	cube = moves.SimpleMove(cube, "D2")
+	// cube = moves.SimpleMove(cube, "F")
+	cube = gocube.ScrambleCube(cube)
 	gocube.PrintCube(cube)
 	// data.ExportToJSON(cube, "res/3x3.json")
 }
