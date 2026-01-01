@@ -1,4 +1,4 @@
-package gocube_ihm
+package ihm_components
 
 import (
 	"image/color"

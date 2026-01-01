@@ -10,6 +10,7 @@ import (
 	"gioui.org/op/paint"
 
 	"simul/gocube/gocube"
+	"simul/gocube/gocube_ihm/ihm_components"
 )
 
 func MainView() {
@@ -45,10 +46,7 @@ func runMain(window *app.Window) error {
 			})
 
 			// display cube
-			drawFrontFace(gtx, cube)
-			drawUpFace(gtx, cube)
-			//todo: implement right faces
-			drawRightFace(gtx, cube)
+			ihm_components.Draw3x3Cube(gtx, cube)
 
 			// Pass the drawing operations to the GPU.
 			e.Frame(gtx.Ops)
