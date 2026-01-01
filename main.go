@@ -1,19 +1,9 @@
 package main
 
 import (
-	"fmt"
-	"simul/gocube/gocube"
-	// "simul/gocube/gocube/moves"
-	// "simul/gocube/gocube/data"
+	"simul/gocube/gocube_ihm"
 )
 
 func main() {
-	var cube = gocube.GetCube(3)
-	// var cube = data.ImportFromJSON("res/3x3.json")
-	gocube.PrintCube(cube)
-	fmt.Printf("\n-------------------------------------------\n\n")
-	// cube = moves.SimpleMove(cube, "F")
-	cube = gocube.ScrambleCube(cube)
-	gocube.PrintCube(cube)
-	// data.ExportToJSON(cube, "res/3x3.json")
+	gocube_ihm.MainView()
 }
