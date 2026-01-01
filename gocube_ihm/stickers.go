@@ -30,3 +30,33 @@ func drawFrontSticker(gtx layout.Context, coord f32.Point, col string, size int)
 	}
 	drawPolygon(gtx, points, colors)
 }
+
+func drawUpSticker(gtx layout.Context, coord f32.Point, col string, size int) {
+	colors, ok := mapStickerColors[col]
+	if ok {} else {
+		colors = mapStickerColors["black"]
+	}
+	half := int(size / 2)
+	points := []f32.Point{
+		f32.Pt(coord.X, coord.Y),
+		f32.Pt(coord.X+float32(size), coord.Y),
+		f32.Pt(coord.X+float32(size)-float32(half), coord.Y+float32(half)),
+		f32.Pt(coord.X-float32(half), coord.Y+float32(half)),
+	}
+	drawPolygon(gtx, points, colors)
+}
+
+func drawRightSticker(gtx layout.Context, coord f32.Point, col string, size int){
+	colors, ok := mapStickerColors[col]
+	if ok {} else {
+		colors = mapStickerColors["black"]
+	}
+	half := int(size / 2)
+	points := []f32.Point{
+		f32.Pt(coord.X, coord.Y),
+		f32.Pt(coord.X+float32(half), coord.Y-float32(half)),
+		f32.Pt(coord.X+float32(half), coord.Y+float32(half)),
+		f32.Pt(coord.X, coord.Y+float32(size)),
+	}
+	drawPolygon(gtx, points, colors)
+}

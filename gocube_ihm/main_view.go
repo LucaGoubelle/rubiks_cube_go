@@ -45,9 +45,10 @@ func runMain(window *app.Window) error {
 			})
 
 			// display cube
-			//todo: implement up / right faces
 			drawFrontFace(gtx, cube)
-
+			drawUpFace(gtx, cube)
+			//todo: implement right faces
+			drawRightFace(gtx, cube)
 
 			// Pass the drawing operations to the GPU.
 			e.Frame(gtx.Ops)
