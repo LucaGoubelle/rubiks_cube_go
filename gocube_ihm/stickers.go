@@ -19,9 +19,7 @@ var mapStickerColors = map[string]color.NRGBA {
 
 func drawFrontSticker(gtx layout.Context, coord f32.Point, col string, size int) {
 	colors, ok := mapStickerColors[col]
-	if ok {
-
-	} else {
+	if ok {} else {
 		colors = mapStickerColors["black"]
 	}
 	points := []f32.Point{
