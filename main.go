@@ -1,9 +1,9 @@
 package main
 
 import (
-	"simul/gocube/gocube_ihm"
+	"simul/gocube/gocube_ihm/views"
 )
 
 func main() {
-	gocube_ihm.MainView()
+	views.Cube3x3View()
 }
