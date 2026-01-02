@@ -53,6 +53,21 @@ func draw3x3UpFace(gtx layout.Context, cube map[string][][]string) {
 	drawUpSticker(gtx, f32.Pt(302, 49), cube["up"][0][2], 25)
 }
 
+func draw2x2UpFace(gtx layout.Context, face [][]string, coord f32.Point, size int, half int, offset int) {
+	var faceLen = len(face)
+
+	for i := 0; i < faceLen; i++ {
+		var x0 = coord.X + float32(size)*(float32(i)+float32(0)) + float32(offset)*(float32(i)+float32(0)) + float32(half)
+		var x1 = coord.X + float32(size)*(float32(i)+float32(1)) + float32(offset)*(float32(i)+float32(1))
+
+		var y0 = coord.Y - float32(half)*float32(1) - float32(offset)*float32(1)
+		var y1 = coord.Y - float32(half)*float32(2) - float32(offset)*float32(2)
+
+		drawUpSticker(gtx, f32.Pt(x0, y0), face[1][i], size)
+		drawUpSticker(gtx, f32.Pt(x1, y1), face[0][i], size)
+	}
+}
+
 func draw4x4UpFace(gtx layout.Context, face [][]string, coord f32.Point, size int, half int, offset int) {
 	var faceLen = len(face)
 
