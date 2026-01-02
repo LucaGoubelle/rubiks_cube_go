@@ -6,5 +6,5 @@ import (
 
 func main() {
 	// views.Cube3x3View()
-	views.Cube4x4View()
+	views.Cube7x7View()
 }
