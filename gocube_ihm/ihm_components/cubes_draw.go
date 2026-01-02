@@ -5,6 +5,11 @@ import (
 	"gioui.org/layout"
 )
 
+func Draw2x2Cube(gtx layout.Context, cube map[string][][]string) {
+	_drawFront(gtx, cube["front"], f32.Pt(200, 100), 50, 5)
+	_drawRight(gtx, cube["right"], f32.Pt(200, 100), 50, 25, 5)
+}
+
 func Draw3x3Cube(gtx layout.Context, cube map[string][][]string) {
 	_drawFront(gtx, cube["front"], f32.Pt(200, 100), 25, 5)
 	draw3x3UpFace(gtx, cube)
