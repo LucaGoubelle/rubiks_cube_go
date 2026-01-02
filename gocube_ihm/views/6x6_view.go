@@ -1,13 +1,11 @@
 package views
 
 import (
-	"image/color"
 	"log"
 	"os"
 
 	"gioui.org/app"
 	"gioui.org/op"
-	"gioui.org/op/paint"
 
 	"simul/gocube/gocube"
 	"simul/gocube/gocube_ihm/ihm_components"
@@ -37,10 +35,7 @@ func run6x6(window *app.Window) error {
 		case app.FrameEvent:
 			// This graphics context is used for managing the rendering state.
 			gtx := app.NewContext(&ops, e)
-
-			paint.Fill(gtx.Ops, color.NRGBA{
-				R: 32, G: 32, B: 32, A: 255,
-			})
+			ihm_components.SetBackground(gtx)
 
 			// display cube
 			ihm_components.Draw6x6Cube(gtx, cube)
