@@ -13,6 +13,7 @@ func Draw3x3Cube(gtx layout.Context, cube map[string][][]string) {
 
 func Draw4x4Cube(gtx layout.Context, cube map[string][][]string) {
 	_drawFront(gtx, cube["front"], f32.Pt(200, 100), 25, 5)
+	draw4x4UpFace(gtx, cube["up"], f32.Pt(200, 100), 25, 12, 5)
 	_drawRight(gtx, cube["right"], f32.Pt(200, 100), 25, 12, 5)
 }
 
