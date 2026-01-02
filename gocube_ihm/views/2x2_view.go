@@ -1,7 +1,6 @@
 package views
 
 import (
-	"fmt"
 	"log"
 	"os"
 
@@ -48,9 +47,7 @@ func run2x2(window *app.Window) error {
 
 
 			if scrambleButton.Clicked(gtx) {
-				fmt.Println("click")
 				cube = gocube.ScrambleCube(cube)
-				ihm_components.Draw2x2Cube(gtx, cube)
 			}
 			//display button + space bottom
 			layout.Flex{
