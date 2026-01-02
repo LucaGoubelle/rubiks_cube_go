@@ -73,3 +73,84 @@ func draw4x4UpFace(gtx layout.Context, face [][]string, coord f32.Point, size in
 		drawUpSticker(gtx, f32.Pt(x3, y3), face[0][i], size)
 	}
 }
+
+func draw5x5UpFace(gtx layout.Context, face [][]string, coord f32.Point, size int, half int, offset int) {
+	var faceLen = len(face)
+
+	for i := 0; i < faceLen; i++ {
+		var x0 = coord.X + float32(size)*(float32(i)+float32(0)) + float32(offset)*(float32(i)+float32(0)) + float32(half)
+		var x1 = coord.X + float32(size)*(float32(i)+float32(1)) + float32(offset)*(float32(i)+float32(1))
+		var x2 = coord.X + float32(size)*(float32(i)+float32(1)) + float32(offset)*(float32(i)+float32(2)) + float32(half)
+		var x3 = coord.X + float32(size)*(float32(i)+float32(2)) + float32(offset)*(float32(i)+float32(3))
+		var x4 = coord.X + float32(size)*(float32(i)+float32(2)) + float32(offset)*(float32(i)+float32(4)) + float32(half)
+
+		var y0 = coord.Y - float32(half)*float32(1) - float32(offset)*float32(1)
+		var y1 = coord.Y - float32(half)*float32(2) - float32(offset)*float32(2)
+		var y2 = coord.Y - float32(half)*float32(3) - float32(offset)*float32(3)
+		var y3 = coord.Y - float32(half)*float32(4) - float32(offset)*float32(4)
+		var y4 = coord.Y - float32(half)*float32(5) - float32(offset)*float32(5)
+
+		drawUpSticker(gtx, f32.Pt(x0, y0), face[4][i], size)
+		drawUpSticker(gtx, f32.Pt(x1, y1), face[3][i], size)
+		drawUpSticker(gtx, f32.Pt(x2, y2), face[2][i], size)
+		drawUpSticker(gtx, f32.Pt(x3, y3), face[1][i], size)
+		drawUpSticker(gtx, f32.Pt(x4, y4), face[0][i], size)
+	}
+}
+
+func draw6x6UpFace(gtx layout.Context, face [][]string, coord f32.Point, size int, half int, offset int) {
+	var faceLen = len(face)
+
+	for i := 0; i < faceLen; i++ {
+		var x0 = coord.X + float32(size)*(float32(i)+float32(0)) + float32(offset)*(float32(i)+float32(0)) + float32(half)
+		var x1 = coord.X + float32(size)*(float32(i)+float32(1)) + float32(offset)*(float32(i)+float32(1))
+		var x2 = coord.X + float32(size)*(float32(i)+float32(1)) + float32(offset)*(float32(i)+float32(2)) + float32(half)
+		var x3 = coord.X + float32(size)*(float32(i)+float32(2)) + float32(offset)*(float32(i)+float32(3))
+		var x4 = coord.X + float32(size)*(float32(i)+float32(2)) + float32(offset)*(float32(i)+float32(4)) + float32(half)
+		var x5 = coord.X + float32(size)*(float32(i)+float32(3)) + float32(offset)*(float32(i)+float32(5))
+
+		var y0 = coord.Y - float32(half)*float32(1) - float32(offset)*float32(1)
+		var y1 = coord.Y - float32(half)*float32(2) - float32(offset)*float32(2)
+		var y2 = coord.Y - float32(half)*float32(3) - float32(offset)*float32(3)
+		var y3 = coord.Y - float32(half)*float32(4) - float32(offset)*float32(4)
+		var y4 = coord.Y - float32(half)*float32(5) - float32(offset)*float32(5)
+		var y5 = coord.Y - float32(half)*float32(6) - float32(offset)*float32(6)
+
+		drawUpSticker(gtx, f32.Pt(x0, y0), face[5][i], size)
+		drawUpSticker(gtx, f32.Pt(x1, y1), face[4][i], size)
+		drawUpSticker(gtx, f32.Pt(x2, y2), face[3][i], size)
+		drawUpSticker(gtx, f32.Pt(x3, y3), face[2][i], size)
+		drawUpSticker(gtx, f32.Pt(x4, y4), face[1][i], size)
+		drawUpSticker(gtx, f32.Pt(x5, y5), face[0][i], size)
+	}
+}
+
+func draw7x7UpFace(gtx layout.Context, face [][]string, coord f32.Point, size int, half int, offset int) {
+	var faceLen = len(face)
+
+	for i := 0; i < faceLen; i++ {
+		var x0 = coord.X + float32(size)*(float32(i)+float32(0)) + float32(offset)*(float32(i)+float32(0)) + float32(half)
+		var x1 = coord.X + float32(size)*(float32(i)+float32(1)) + float32(offset)*(float32(i)+float32(1))
+		var x2 = coord.X + float32(size)*(float32(i)+float32(1)) + float32(offset)*(float32(i)+float32(2)) + float32(half)
+		var x3 = coord.X + float32(size)*(float32(i)+float32(2)) + float32(offset)*(float32(i)+float32(3))
+		var x4 = coord.X + float32(size)*(float32(i)+float32(2)) + float32(offset)*(float32(i)+float32(4)) + float32(half)
+		var x5 = coord.X + float32(size)*(float32(i)+float32(3)) + float32(offset)*(float32(i)+float32(5))
+		var x6 = coord.X + float32(size)*(float32(i)+float32(3)) + float32(offset)*(float32(i)+float32(6)) + float32(half)
+
+		var y0 = coord.Y - float32(half)*float32(1) - float32(offset)*float32(1)
+		var y1 = coord.Y - float32(half)*float32(2) - float32(offset)*float32(2)
+		var y2 = coord.Y - float32(half)*float32(3) - float32(offset)*float32(3)
+		var y3 = coord.Y - float32(half)*float32(4) - float32(offset)*float32(4)
+		var y4 = coord.Y - float32(half)*float32(5) - float32(offset)*float32(5)
+		var y5 = coord.Y - float32(half)*float32(6) - float32(offset)*float32(6)
+		var y6 = coord.Y - float32(half)*float32(7) - float32(offset)*float32(7)
+
+		drawUpSticker(gtx, f32.Pt(x0, y0), face[6][i], size)
+		drawUpSticker(gtx, f32.Pt(x1, y1), face[5][i], size)
+		drawUpSticker(gtx, f32.Pt(x2, y2), face[4][i], size)
+		drawUpSticker(gtx, f32.Pt(x3, y3), face[3][i], size)
+		drawUpSticker(gtx, f32.Pt(x4, y4), face[2][i], size)
+		drawUpSticker(gtx, f32.Pt(x5, y5), face[1][i], size)
+		drawUpSticker(gtx, f32.Pt(x6, y6), face[0][i], size)
+	}
+}
