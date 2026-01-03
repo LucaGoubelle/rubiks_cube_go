@@ -58,7 +58,7 @@ func run3x3(window *app.Window) error {
 				cube = gocube.GetCube(3)
 			}
 			if moveButton.Clicked(gtx) {
-				cube = moves.SimpleMove(cube, moveTyped)
+				cube = moves.MultiMoves(cube, moveTyped)
 			}
 			//display button + space bottom
 			layout.Flex{
