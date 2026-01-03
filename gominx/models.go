@@ -2,7 +2,7 @@ package gominx
 
 func _getKilominxFace(elem string) []string {
 	var face = []string{
-		elem, elem, elem, elem, elem
+		elem, elem, elem, elem, elem,
 	}
 	return face
 }
@@ -10,7 +10,7 @@ func _getKilominxFace(elem string) []string {
 func _getMegaminxFace(elem string) [][]string {
 	var face = [][]string{{
 		elem, elem, elem, elem, elem,
-		elem, elem, elem, elem, elem
+		elem, elem, elem, elem, elem,
 	}, {elem}}
 	return face
 }

@@ -5,7 +5,11 @@ import (
 	"os"
 
 	"gioui.org/app"
+	"gioui.org/layout"
 	"gioui.org/op"
+	"gioui.org/unit"
+	"gioui.org/widget"
+	"gioui.org/widget/material"
 
 	"simul/gocube/gocube"
 	"simul/gocube/gocube_ihm/ihm_components"
@@ -25,9 +29,10 @@ func Cube7x7View() {
 }
 
 func run7x7(window *app.Window) error {
-	// theme := material.NewTheme()
+	theme := material.NewTheme()
 	var cube = gocube.GetCube(7)
 	var ops op.Ops
+	var scrambleButton widget.Clickable
 	for {
 		switch e := window.Event().(type) {
 		case app.DestroyEvent:
@@ -39,6 +44,31 @@ func run7x7(window *app.Window) error {
 
 			// display cube
 			ihm_components.Draw7x7Cube(gtx, cube)
+
+			if scrambleButton.Clicked(gtx) {
+				cube = gocube.ScrambleCube(cube)
+			}
+
+			layout.Flex{
+				// Vertical alignment, from top to bottom
+				Axis: layout.Vertical,
+				// Empty space is left at the start, i.e. at the top
+				Spacing: layout.SpaceStart,
+			}.Layout(gtx,
+				// We insert two rigid elements:
+				// First one to hold a button ...
+				layout.Rigid(
+					func(gtx layout.Context) layout.Dimensions {
+						btn := material.Button(theme, &scrambleButton, "Scramble")
+						return btn.Layout(gtx)
+					},
+				),
+				// ... then one to hold an empty spacer
+				layout.Rigid(
+					// The height of the spacer is 25 Device independent pixels
+					layout.Spacer{Height: unit.Dp(25)}.Layout,
+				),
+			)
 
 			// Pass the drawing operations to the GPU.
 			e.Frame(gtx.Ops)
