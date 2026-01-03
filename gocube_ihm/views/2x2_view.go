@@ -1,7 +1,6 @@
 package views
 
 import (
-	"image/color"
 	"log"
 	"os"
 
@@ -11,9 +10,9 @@ import (
 	"simul/gocube/gocube"
 	"simul/gocube/gocube/moves"
 	"simul/gocube/gocube_ihm/ihm_components"
+	"simul/gocube/gocube_ihm/layouts"
 
 	"gioui.org/layout"
-	"gioui.org/unit"
 	"gioui.org/widget"
 	"gioui.org/widget/material"
 )
@@ -68,56 +67,16 @@ func run2x2(window *app.Window) error {
 				// Empty space is left at the start, i.e. at the top
 				Spacing: layout.SpaceStart,
 			}.Layout(gtx,
-				layout.Rigid(
-					func(gtx layout.Context) layout.Dimensions {
-						e := material.Editor(theme, &inputMove, "")
-						e.Color = color.NRGBA{R:255, G:255, B:255, A:255}
-						e.HintColor = color.NRGBA{R:255, G:255, B:255, A:255}
-						e.Hint = "Enter move here..."
-						e.SelectionColor = color.NRGBA{R:64, G:64, B:64, A:255}
-						moveTyped = e.Editor.Text()
-						return e.Layout(gtx)
-					},
-				),
-				layout.Rigid(
-					// The height of the spacer is 25 Device independent pixels
-					layout.Spacer{Height: unit.Dp(25)}.Layout,
-				),
-				layout.Rigid(
-					func(gtx layout.Context) layout.Dimensions {
-						btnMove := material.Button(theme, &moveButton, "Move")
-						return btnMove.Layout(gtx)
-					},
-				),
-				layout.Rigid(
-					// The height of the spacer is 25 Device independent pixels
-					layout.Spacer{Height: unit.Dp(25)}.Layout,
-				),
-				// We insert two rigid elements:
-				// First one to hold a button ...
-				layout.Rigid(
-					func(gtx layout.Context) layout.Dimensions {
-						btn := material.Button(theme, &scrambleButton, "Scramble")
-						return btn.Layout(gtx)
-					},
-				),
-				layout.Rigid(
-					// The height of the spacer is 25 Device independent pixels
-					layout.Spacer{Height: unit.Dp(25)}.Layout,
-				),
-				layout.Rigid(
-					func(gtx layout.Context) layout.Dimensions {
-						btn2 := material.Button(theme, &resetButton, "Reset")
-						return btn2.Layout(gtx)
-					},
-				),
-				// ... then one to hold an empty spacer
-				layout.Rigid(
-					// The height of the spacer is 25 Device independent pixels
-					layout.Spacer{Height: unit.Dp(25)}.Layout,
-				),
+				layouts.GenMoveEntry(gtx, theme, &inputMove, &moveTyped),
+				layouts.GenSpacer25(),
+				layouts.GenMoveButton(gtx, theme, &moveButton),
+				layouts.GenSpacer25(),
+				layouts.GenScrambleButton(gtx, theme, &scrambleButton),
+				layouts.GenSpacer25(),
+				layouts.GenResetButton(gtx, theme, &resetButton),
+				layouts.GenSpacer25(),
 			)
-			// Pass the drawing operations to the GPU.
+
 			e.Frame(gtx.Ops)
 		}
 	}
