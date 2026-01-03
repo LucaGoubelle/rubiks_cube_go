@@ -5,6 +5,5 @@ import (
 )
 
 func main() {
-	// views.Cube3x3View()
-	views.Cube2x2View()
+	views.Cube3x3View()
 }
