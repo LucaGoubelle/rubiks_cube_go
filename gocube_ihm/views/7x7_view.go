@@ -33,6 +33,7 @@ func run7x7(window *app.Window) error {
 	var cube = gocube.GetCube(7)
 	var ops op.Ops
 	var scrambleButton widget.Clickable
+	var resetButton widget.Clickable
 	for {
 		switch e := window.Event().(type) {
 		case app.DestroyEvent:
@@ -48,6 +49,9 @@ func run7x7(window *app.Window) error {
 			if scrambleButton.Clicked(gtx) {
 				cube = gocube.ScrambleCube(cube)
 			}
+			if resetButton.Clicked(gtx) {
+				cube = gocube.GetCube(7)
+			}
 
 			layout.Flex{
 				// Vertical alignment, from top to bottom
@@ -61,6 +65,17 @@ func run7x7(window *app.Window) error {
 					func(gtx layout.Context) layout.Dimensions {
 						btn := material.Button(theme, &scrambleButton, "Scramble")
 						return btn.Layout(gtx)
+					},
+				),
+				// ... then one to hold an empty spacer
+				layout.Rigid(
+					// The height of the spacer is 25 Device independent pixels
+					layout.Spacer{Height: unit.Dp(25)}.Layout,
+				),
+				layout.Rigid(
+					func(gtx layout.Context) layout.Dimensions {
+						btn2 := material.Button(theme, &resetButton, "Reset")
+						return btn2.Layout(gtx)
 					},
 				),
 				// ... then one to hold an empty spacer
