@@ -9,9 +9,10 @@ import (
 
 	"simul/gocube/gocube"
 	"simul/gocube/gocube_ihm/ihm_components"
-	"gioui.org/widget"
+
 	"gioui.org/layout"
 	"gioui.org/unit"
+	"gioui.org/widget"
 	"gioui.org/widget/material"
 )
 
@@ -33,6 +34,7 @@ func run2x2(window *app.Window) error {
 	var cube = gocube.GetCube(2)
 	var ops op.Ops
 	var scrambleButton widget.Clickable
+	var resetButton widget.Clickable
 	for {
 		switch e := window.Event().(type) {
 		case app.DestroyEvent:
@@ -45,9 +47,11 @@ func run2x2(window *app.Window) error {
 			// display cube
 			ihm_components.Draw2x2Cube(gtx, cube)
 
-
 			if scrambleButton.Clicked(gtx) {
 				cube = gocube.ScrambleCube(cube)
+			}
+			if resetButton.Clicked(gtx) {
+				cube = gocube.GetCube(2)
 			}
 			//display button + space bottom
 			layout.Flex{
@@ -62,6 +66,16 @@ func run2x2(window *app.Window) error {
 					func(gtx layout.Context) layout.Dimensions {
 						btn := material.Button(theme, &scrambleButton, "Scramble")
 						return btn.Layout(gtx)
+					},
+				),
+				layout.Rigid(
+					// The height of the spacer is 25 Device independent pixels
+					layout.Spacer{Height: unit.Dp(25)}.Layout,
+				),
+				layout.Rigid(
+					func(gtx layout.Context) layout.Dimensions {
+						btn2 := material.Button(theme, &resetButton, "Reset")
+						return btn2.Layout(gtx)
 					},
 				),
 				// ... then one to hold an empty spacer
