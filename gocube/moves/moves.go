@@ -13,6 +13,27 @@ func SimpleMove(cube map[string][][]string, mv string) map[string][][]string {
 		cube = moveUPrime(cube)
 	case "U2":
 		cube = moveU2(cube)
+	case "Uw":
+		var size = len(cube["up"])
+		if size < 3 {
+			cube = moveU(cube)
+		} else {
+			cube = moveUw(cube, 2)
+		}
+	case "Uw'":
+		var size = len(cube["up"])
+		if size < 3 {
+			cube = moveUPrime(cube)
+		} else {
+			cube = moveUwPrime(cube, 2)
+		}
+	case "Uw2":
+		var size = len(cube["up"])
+		if size < 3 {
+			cube = moveU2(cube)
+		} else {
+			cube = moveUw2(cube, 2)
+		}
 	case "R":
 		cube = moveR(cube)
 	case "R'":
@@ -31,6 +52,27 @@ func SimpleMove(cube map[string][][]string, mv string) map[string][][]string {
 		cube = moveDPrime(cube)
 	case "D2":
 		cube = moveD2(cube)
+	case "Dw":
+		var size = len(cube["down"])
+		if size < 3 {
+			cube = moveD(cube)
+		} else {
+			cube = moveDw(cube, 2)
+		}
+	case "Dw'":
+		var size = len(cube["down"])
+		if size < 3 {
+			cube = moveDPrime(cube)
+		} else {
+			cube = moveDwPrime(cube, 2)
+		}
+	case "Dw2":
+		var size = len(cube["down"])
+		if size < 3 {
+			cube = moveD2(cube)
+		} else {
+			cube = moveDw2(cube, 2)
+		}
 	case "F":
 		cube = moveF(cube)
 	case "F'":
