@@ -119,3 +119,43 @@ func moveLw2(cube map[string][][]string, nbLayers int) map[string][][]string {
 	}
 	return cube
 }
+
+func moveRw(cube map[string][][]string, nbLayers int) map[string][][]string {
+	cube["right"] = rotate(cube["right"])
+	var size = len(cube["right"])
+
+	var newFront = genEmptyFace(size)
+	var newUp = genEmptyFace(size)
+	var newBack = genEmptyFace(size)
+	var newDown = genEmptyFace(size)
+
+	for j:=0; j<nbLayers; j++ {
+		for i:=0; i<size; i++ {
+			newFront[i][size-1-j] = cube["down"][i][size-1-j]
+			newUp[i][size-1-j] = cube["front"][i][size-1-j]
+			newBack[i][size-1-j] = cube["up"][i][size-1-j]
+			newDown[i][j] = cube["back"][i][j]
+		}
+	}
+
+	cube["front"] = transfert(cube["front"], newFront)
+	cube["up"] = transfert(cube["up"], newUp)
+	cube["back"] = transfert(cube["back"], rotateTwice(newBack))
+	cube["down"] = transfert(cube["down"], rotateTwice(newDown))
+
+	return cube
+}
+
+func moveRwPrime(cube map[string][][]string, nbLayers int) map[string][][]string {
+	for i:=0; i<3; i++ {
+		cube = moveRw(cube, nbLayers)
+	}
+	return cube
+}
+
+func moveRw2(cube map[string][][]string, nbLayers int) map[string][][]string {
+	for i:=0; i<2; i++ {
+		cube = moveRw(cube, nbLayers)
+	}
+	return cube
+}
